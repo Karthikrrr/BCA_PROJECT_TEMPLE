@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEMPLE</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" th:href="@{..\img\logo.jpeg}" />
+
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <link th:href="@{/vendor/animate.css/animate.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+    
+          <a th:href="@{/}" class="logo me-auto"><img th:src="@{/img/logo.jpeg}" alt="" class="img-fluid"></a>
+    
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul class="nav__list">
+              <li class="nav__item"><a th:href="@{/}" class="nav__links active">Home</a></li>
+    
+              <li class="nav__item"><a th:href="@{/about}" class="nav__links"><span>About us</span></a></li>
+              <li class="nav__item"><a th:href="@{/projects}" class="nav__links">Temples</a></li>    
+              <li class="nav__item"><a th:href="@{/contact}" class="nav__links">Contact us</a></li>
+              <li class="nav__item"><a th:href="@{/newsandupdates}" class="nav__links">News and updates</a></li>
+    
+          
+              <li sec:authorize="!isAuthenticated()" class="nav__item"><a th:href="@{/login}" class="nav__links">Login</a></li>
+              <li sec:authorize="!isAuthenticated()" class="nav__item"><a th:href="@{/register}" class="nav__links">Register</a></li>
+              <li sec:authorize="isAuthenticated()" class="nav__item"><a th:href="@{/logout}" class="nav__links">Logout</a></li>
+    
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
+          <div class="header-social-links d-flex">
+            <a href="mailto:" class="mail"><i class="bi bi-envelope"></i></a>
+            <a href="https://wa.me/phno/" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.instagram.com/techref_digital_solutions_llp/?utm_source=ig_web_button_share_sheet&igsh=ODdmZWVhMTFiMw%3D%3D"
+              class="instagram"><i class="bu bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
+          </div>
+    
+        </div>
+      </header><!-- End Header -->
+
+
+  <!-- Page Title -->
+  <div class="page-title" data-aos="fade" style="background-image: url(/img/slide2.jpg);">
+    <div class="container position-relative">
+      <h1>About</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a th:href="@{/}">Home</a></li>
+          <li class="current">About</li>
+        </ol>
+      </nav>
+    </div>
+  </div><!-- End Page Title -->
+
+
+
+
+  <section id="work-process" class="work-process mt-5 mb-5 ">
+    <div class="container">
+  
+      <div class="section-title" data-aos="fade-up">
+        <h2>Welcome to Our Temple Seva Booking App – Your Divine Connection, Just a Click Away</h2>
+        <p>Experience the spiritual convenience of booking your Sevas, Archanas, and Poojas online with our dedicated Temple Seva Booking platform. Our mission is to simplify your sacred commitments by bringing traditional temple services closer to devotees through technology.</p>
+      </div>
+  
+      <div class="row content">
+        <div class="col-md-5" data-aos="fade-up">
+          <img th:src="@{/img/t5.jpeg}" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-4" data-aos="fade-up">
+          <h3>Our Services</h3>
+          <p>
+            Seamless Seva Booking, Online Payments, Devotee Notifications
+          </p>
+          <ul>
+            <li><i class="bi bi-check"></i>Seva Booking <p>From daily rituals to special occasions, our platform enables devotees to book a wide range of temple services from the comfort of their homes.</p></li>
+            <li><i class="bi bi-check"></i> Online Payment Integration <p>Secure and user-friendly payment options make it easy to confirm bookings instantly, reducing manual effort and ensuring smooth temple operations.</p></li>
+            <li><i class="bi bi-check"></i> Instant Notifications <p>Receive timely updates about your bookings, upcoming rituals, or temple festivals through SMS or email, keeping you spiritually connected.</p></li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="row content">
+        <div class="col-md-5 order-1 order-md-2" data-aos="fade-up">
+          <img th:src="@{/img/t2.jpeg}" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-up">
+          <h3>Why Choose Us?</h3>
+          <ul>
+            <li><i class="bi bi-check"></i>Tradition Meets Technology <p>We honor temple traditions while using digital tools to provide a seamless experience for devotees worldwide.</p></li>
+            <li><i class="bi bi-check"></i> Easy Access <p>No more standing in long queues. Our user-friendly app makes booking Sevas quick and accessible to all, even in remote areas.</p></li>
+            <li><i class="bi bi-check"></i> Trusted by Temples <p>Partnered with multiple temples, our app is a trusted bridge between spiritual needs and modern convenience, trusted by temple authorities and devotees alike.</p></li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="row content">
+        <div class="col-md-5" data-aos="fade-up">
+          <img th:src="@{/img/t1.jpeg}" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-5" data-aos="fade-up">
+          <h3>Vision</h3>
+          <p>To digitally empower temples and devotees by making spiritual services accessible to everyone, anywhere, anytime – fostering a deeper connection between faith and technology.</p>
+          <ul>
+            <li><i class="bi bi-check"></i>Accessible Devotion <p>We aim to make temple services accessible to all, regardless of location, ensuring everyone can participate in sacred rituals.</p></li>
+            <li><i class="bi bi-check"></i> Simplifying Sacred Services <p>By digitizing Seva bookings and communication, we help temples operate efficiently while maintaining their spiritual essence.</p></li>
+            <li><i class="bi bi-check"></i> Empowering Temples <p>We support temples with modern tools to manage devotees, bookings, and festivals – all in one secure platform.</p></li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="row content">
+        <div class="col-md-5 order-1 order-md-2" data-aos="fade-up">
+          <img th:src="@{/img/t9.jpeg}" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-up">
+          <h3>Mission</h3>
+          <p>
+            Our mission is to bring temples and devotees closer by offering a digital space where spiritual services are simplified, accessible, and deeply respectful of tradition.
+          </p>
+          <ul>
+            <li><i class="bi bi-check"></i> Connecting Faith & Innovation <p>We strive to create a bridge between timeless temple traditions and modern user expectations.</p></li>
+            <li><i class="bi bi-check"></i> Enabling Devotees <p>We ensure every devotee, regardless of their location, can participate in their temple’s rituals and events effortlessly.</p></li>
+            <li><i class="bi bi-check"></i> Supporting Temples <p>Beyond just bookings, we provide temples with dashboards, reports, and insights to manage their Seva services efficiently and transparently.</p></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+
+
+
+
+
+
+
+
+
+
+     
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <a th:href="@{/}" class="foot-logo me-auto"><img  th:href="@{..\img\logo.jpeg}" alt=""
+                class="img-fluid"></a>
+            <p>
+              SS Aracade, #665,1st floor <br>
+              Nrupatunga road,M Block, Kuvempu Nagar,<br>
+              Mysuru-23 <br><br>
+              <strong>Phone:</strong><a href="tel:0000000">+91 0000000000 </a><br>
+              <strong>Email:</strong> <a href="mailto:"
+                class="email">temples@gmail.com</a><br>
+            </p>
+          </div>
+  
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/about}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/projetcs}">Projects</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/newsandupdates}">News & Updates</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/placements}">Placements</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/collabrations}">Collabrations</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/contact}">Contact us</a></li>
+            </ul>
+          </div>
+  
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a  th:href="@{/projects}">Prasadam Booking</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a  th:href="@{/projects}">Arthi Booking</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a  th:href="@{/projects}">E-Hundi</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/projects}">Special Pooja Booking</a></li>
+            </ul>
+          </div>
+  
+          
+  
+        </div>
+      </div>
+    </div>
+  
+    <div class="container d-md-flex py-4">
+  
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Temple</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits"> Designed by <a href="">@Temples</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://wa.me/phmo/" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+        <a href="#"
+          class="instagram"><i class="bu bi-instagram"></i></a>
+  
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+  
+
+  <!-- End Footer -->
+
+
+  <!-- Back to Top Button -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- End of back to top button -->
+
+
+
+
+
+
+
+
+
+  <script th:src="@{../vendor/aos/aos.js}"></script>
+  <script th:src="@{../vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{../vendor/glightbox/js/glightbox.min.js}"></script>
+  <script th:src="@{../vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+  <script th:src="@{../vendor/swiper/swiper-bundle.min.js}"></script>
+  <script th:src="@{../vendor/waypoints/noframework.waypoints.js}"></script>
+
+
+  <!-- Template Main JS File -->
+  <script th:src="@{../js/main.js}"></script>
+
+
+
+</body>
+
+</html>

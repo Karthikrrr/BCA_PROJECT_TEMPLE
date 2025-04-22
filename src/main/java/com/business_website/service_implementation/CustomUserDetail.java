@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.business_website.models.User;
 
 public class CustomUserDetail implements UserDetails{
-
+    
     private final User user;
 
     public CustomUserDetail(User user) {

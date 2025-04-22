@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEMPLE</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" th:href="@{..\img\logo.jpeg}" />
+
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <link th:href="@{/vendor/animate.css/animate.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+    
+          <a th:href="@{/}" class="logo me-auto"><img th:src="@{/img/logo.jpeg}" alt="" class="img-fluid"></a>
+    
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul class="nav__list">
+              <li class="nav__item"><a th:href="@{/}" class="nav__links active">Home</a></li>
+    
+              <li class="nav__item"><a th:href="@{/about}" class="nav__links"><span>About us</span></a></li>
+              <li class="nav__item"><a th:href="@{/projects}" class="nav__links">Temples</a></li>    
+              <li class="nav__item"><a th:href="@{/contact}" class="nav__links">Contact us</a></li>
+              <li class="nav__item"><a th:href="@{/newsandupdates}" class="nav__links">News and updates</a></li>
+    
+          
+              <li sec:authorize="!isAuthenticated()" class="nav__item"><a th:href="@{/login}" class="nav__links">Login</a></li>
+              <li sec:authorize="!isAuthenticated()" class="nav__item"><a th:href="@{/register}" class="nav__links">Register</a></li>
+              <li sec:authorize="isAuthenticated()" class="nav__item"><a th:href="@{/logout}" class="nav__links">Logout</a></li>
+    
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
+          <div class="header-social-links d-flex">
+            <a href="mailto:" class="mail"><i class="bi bi-envelope"></i></a>
+            <a href="https://wa.me/phno/" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.instagram.com/techref_digital_solutions_llp/?utm_source=ig_web_button_share_sheet&igsh=ODdmZWVhMTFiMw%3D%3D"
+              class="instagram"><i class="bu bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
+          </div>
+    
+        </div>
+      </header><!-- End Header -->
+
+<br><br>
+<div class="container mt-5 mb-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Arthi Booking Form</h4>
+    </div>
+    <div class="card-body">
+      <form id="arthiForm" th:action="@{/temple/{id}/arthi/generate-pdf(id=${temple.id})}" method="post">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="templeName" class="form-label">Temple Name</label>
+            <input type="text" class="form-control" id="templeName" name="templeName" 
+                   th:value="${temple.title}" readonly required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="userName" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="userName" name="userName" 
+                   placeholder="Enter Your Name" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" 
+                   placeholder="Enter Email Address" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" 
+                   placeholder="Enter Phone Number" pattern="[0-9]{10}" required>
+            <small class="text-muted">10 digit phone number</small>
+          </div>
+
+          <div class="col-md-6">
+            <label for="date" class="form-label">Preferred Date</label>
+            <input type="date" class="form-control" id="date" name="date" 
+                   th:attr="min=${todayDate}" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="time" class="form-label">Preferred Time</label>
+            <input type="time" class="form-control" id="time" name="time" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="numberOfPpl" class="form-label">Number of People</label>
+            <input type="number" class="form-control" id="numberOfPpl" name="numberOfPpl" 
+                   placeholder="Enter Number of Participants" min="1" required>
+          </div>
+        </div>
+
+        <!-- Payment Method Section -->
+        <div class="mt-4">
+          <h5 class="mb-2">Payment Method</h5>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="codCheckbox" name="paymentMethod" value="COD">
+            <label class="form-check-label" for="codCheckbox">
+              Cash on Delivery (COD)
+            </label>
+          </div>
+        </div>
+
+        <!-- Confirmation Checkbox -->
+        <div class="form-check mt-4">
+          <input class="form-check-input" type="checkbox" id="confirmCheckbox" required>
+          <label class="form-check-label" for="confirmCheckbox">
+            I confirm the entered details are correct
+          </label>
+        </div>
+
+        <div class="mt-4">
+          <button type="submit" class="btn btn-success">Book Arthi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript validation + redirect -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("arthiForm");
+
+    form.addEventListener("submit", function (event) {
+      const confirmCheckbox = document.getElementById("confirmCheckbox");
+      const codCheckbox = document.getElementById("codCheckbox");
+
+      if (!confirmCheckbox.checked) {
+        event.preventDefault();
+        alert("Please confirm that the entered details are correct.");
+        return;
+      }
+
+      if (!codCheckbox.checked) {
+        event.preventDefault();
+        alert("Please select a payment method (COD).");
+        return;
+      }
+
+      // Optional redirect after form submission
+      setTimeout(function () {
+        window.location.href = "/projects";
+      }, 5000);
+    });
+  });
+</script>
+
+
+     
+<footer id="footer">
+
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <a th:href="@{/}" class="foot-logo me-auto"><img  th:href="@{..\img\logo.jpeg}" alt=""
+              class="img-fluid"></a>
+          <p>
+            SS Aracade, #665,1st floor <br>
+            Nrupatunga road,M Block, Kuvempu Nagar,<br>
+            Mysuru-23 <br><br>
+            <strong>Phone:</strong><a href="tel:0000000">+91 0000000000 </a><br>
+            <strong>Email:</strong> <a href="mailto:"
+              class="email">temples@gmail.com</a><br>
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a th:href="@{/}">Home</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a th:href="@{/about}">About us</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a th:href="@{/projetcs}">Projects</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a th:href="@{/newsandupdates}">News & Updates</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a th:href="@{/placements}">Placements</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a th:href="@{/collabrations}">Collabrations</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a th:href="@{/contact}">Contact us</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a  th:href="@{/projects}">Prasadam Booking</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a  th:href="@{/projects}">Arthi Booking</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a  th:href="@{/projects}">E-Hundi</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a th:href="@{/projects}">Special Pooja Booking</a></li>
+          </ul>
+        </div>
+
+        
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-md-flex py-4">
+
+    <div class="me-md-auto text-center text-md-start">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Temple</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits"> Designed by <a href="">@Temples</a>
+      </div>
+    </div>
+    <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+      <a href="https://wa.me/phmo/" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+      <a href="#"
+        class="instagram"><i class="bu bi-instagram"></i></a>
+
+      <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- End Footer -->
+
+
+  <!-- Back to Top Button -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- End of back to top button -->
+
+
+
+
+
+
+
+  <script th:src="@{../vendor/aos/aos.js}"></script>
+  <script th:src="@{../vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{../vendor/glightbox/js/glightbox.min.js}"></script>
+  <script th:src="@{../vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+  <script th:src="@{../vendor/swiper/swiper-bundle.min.js}"></script>
+  <script th:src="@{../vendor/waypoints/noframework.waypoints.js}"></script>
+
+
+  <!-- Template Main JS File -->
+  <script th:src="@{../js/main.js}"></script>
+
+
+
+</body>
+
+</html>
+  

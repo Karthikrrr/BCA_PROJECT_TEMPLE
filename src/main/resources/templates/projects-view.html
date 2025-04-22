@@ -1,9 +1,0 @@
-<h1>Works!!!!!</h1>
-<ul>
-    <li th:each="project : ${projects}">
-        <img th:src="@{../uploads/{image}(image=${project.imageUrl})}" alt="Post Image"/>
-        <h2 th:text="${project.title}"></h2>
-        <p th:text="${project.content}"></p>
-        <p>Created at: <span th:text="${project.createdAt}"></span></p>
-    </li>
-</ul>

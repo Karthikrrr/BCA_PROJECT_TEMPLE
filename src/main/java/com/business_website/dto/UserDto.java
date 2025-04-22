@@ -2,21 +2,18 @@ package com.business_website.dto;
 
 import java.time.LocalDateTime;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class UserDto {
 
     private String email;
+    @NotBlank(message = "Password is mandatory")
+    @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
     private LocalDateTime createdAt;
     private String role;
   
-
-    public UserDto(String email, String password,LocalDateTime createdAt, String role) {
-        super();
-        this.email = email;
-        this.password = password;
-        this.createdAt = createdAt;
-        this.role = role;
-    }
 
     public String getEmail() {
         return email;

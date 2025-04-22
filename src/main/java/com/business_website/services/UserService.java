@@ -10,5 +10,4 @@ public interface UserService {
     User save(UserDto userDto);
     boolean checkUsername(String email);
     void deleteUser(Long id);
-
 }

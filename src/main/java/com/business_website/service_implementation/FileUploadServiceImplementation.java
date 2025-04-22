@@ -3,9 +3,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.business_website.services.FileUploadService;
@@ -20,9 +20,9 @@ public class FileUploadServiceImplementation implements FileUploadService {
         return "file is empty";
     }
     if(file.getSize() > 1048576){
-        return "1mb";
+        throw new MaxUploadSizeExceededException(1048576);
     }
-    String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+    String fileName = file.getOriginalFilename();
     Path filePath = Paths.get(UPLOAD_DIR + fileName);
     try {
         Files.createDirectories(filePath.getParent());

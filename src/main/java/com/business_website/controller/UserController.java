@@ -1,97 +1,73 @@
 package com.business_website.controller;
 
-import java.security.Principal;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.business_website.dto.UserDto;
-import com.business_website.models.User;
-import com.business_website.service_implementation.UserServiceImplementation;
 import com.business_website.services.UserService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class UserController {
 
-    @Autowired
-    UserDetailsService userDetailsService;
+    // @Autowired
+    // UserDetailsService userDetailsService;
 
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserServiceImplementation userServiceImplementation;
-
+    
     @GetMapping("/")
-    public String getHome(Model model, Principal principal){
-        UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
-        model.addAttribute("users", userDetails);
-        return "home";
+    public String getHome(Model model){        
+        return "users/home";
     }
 
     @GetMapping("/register")
-    public String getRegisterPage(){
-        return "register";
+    public String getRegisterPage(Model model){
+        model.addAttribute("users", new UserDto());
+        return "users/register";
     }
 
     @PostMapping("/register")
-        public String saveUser(@ModelAttribute("users") UserDto userDto, Model model){
-            String email =  userDto.getEmail();
-            if(userService.checkUsername(email)){
-                System.out.println(email + "User exist");
+        public String saveUser(@Valid @ModelAttribute("users") UserDto userDto, Model model, @RequestParam("confirmPassword") String confirmPassword){
+            if(userService.checkUsername(userDto.getEmail())){
                 model.addAttribute("message", "Email Alredy exist");
-                return "register";              
+                return "users/register";              
+            }
+            else if(!confirmPassword.equals(userDto.getPassword())){
+                model.addAttribute("message", "Password Didnt Match Re-Enter Password");
+                return "users/register";
             }
             else{
-                System.out.println(email + "new User");
                 userService.save(userDto);
                 model.addAttribute("message", "Register Sucessfull");
-                return "login";
-            }
-        
+                return "users/login";
+            }   
     }
 
     @GetMapping("/login")
     public String login(){
-        return "login";
+        return "users/login";
     }
 
-
-
-
-    //ADMIN Controller
-    @GetMapping("/admin-page")
-    public String admin(Model model, Principal principal){
-        UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
-        model.addAttribute("users", userDetails);
-        return "admin";
+    @GetMapping("/about")
+    public String aboutUs(){
+        return "users/about";
     }
 
-    @GetMapping("/admin-page/users")
-    public String usersList(Model model){
-        List<User> users = userServiceImplementation.getAllUsers();
-        model.addAttribute("userList" , users);
-        return "admin-user-list";
+    @GetMapping("/contact")
+    public String contactUs(){
+        return "users/contact";
     }
 
-    @GetMapping("/admin-page/users/confirmDelete/{id}")
-    public String confirmDelete(@PathVariable("id") Long id, Model model){
-        model.addAttribute("userId", id);
-        return "confirm-delete";
+    @GetMapping("/collabrations")
+    public String collabrations(){
+        return "users/collabrations";
     }
-
-    @PostMapping("/admin-page/users/delete/{id}")
-    public String deleteUser(@PathVariable("id") Long id){
-        userServiceImplementation.deleteUser(id);
-        return "redirect:/admin-page/users";
-    }
-    
 }

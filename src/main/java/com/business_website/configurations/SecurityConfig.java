@@ -25,39 +25,41 @@ public class SecurityConfig {
     @Autowired
     CustomUserDetailService customUserDetailService;
 
+
     @Bean
     public static PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
+   
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
          
         httpSecurity.csrf(c -> c.disable())
-        .authorizeHttpRequests(request -> request.requestMatchers("/admin-page")
+        .authorizeHttpRequests(request -> request.requestMatchers("/admin/**")
         .hasAuthority("ADMIN")
-        .requestMatchers("admin-page/projects")
-        .hasAuthority("ADMIN")
-        .requestMatchers("/admin-page/projects/new")
-        .hasAuthority("ADMIN")
-        .requestMatchers("admin-page/projects/update/{id}")
-        .hasAuthority("ADMIN")
-        .requestMatchers("admin-page/projects/delete/{id}")
-        .hasAuthority("ADMIN")
-        .requestMatchers("admin-page/projects/confirmDelete/{id}")
-        .hasAuthority("ADMIN")
-        .requestMatchers("/")
-        .hasAuthority("USER")
-        .requestMatchers("/register", "/css/**").permitAll()
-        .anyRequest().authenticated())
+        .requestMatchers("/register","/css/**").permitAll()
+        .requestMatchers("/projects",
+        "/newsandupdates",
+        "/", "/placements",
+        "/about",
+        "/contact",
+        "/collabrations", 
+        "/css/**",
+        "/vendor/**",
+        "/js/**",
+        "/img/**",
+        "/uploads/**",
+        "/lib/**",
+        "/scss/**").permitAll().anyRequest().authenticated())
 
         .formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login")
         .successHandler(customSucessHandler).permitAll())
 
         .logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        .logoutSuccessUrl("/login?logout").permitAll());
-
+        .logoutSuccessUrl("/login").permitAll());
+        
         return httpSecurity.build();
     }
 
@@ -65,5 +67,7 @@ public class SecurityConfig {
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(customUserDetailService).passwordEncoder(passwordEncoder());
     }
+
+
 
 }

@@ -7,14 +7,45 @@ public class ProjectsDto {
     private String title;
     private String content;
     private String imageUrl;
+    private int arthiAmount;
+    private int archanaAmount;
+    private int prsadamAmount;
+    private int specialPoojaAmount;
     private LocalDateTime createdAt;
 
-    public ProjectsDto(String title, String content, String imageUrl ,LocalDateTime createdAt){
-        super();
-        this.title = title;
-        this.content = content;
-        this.imageUrl = imageUrl;
-        this.createdAt = createdAt;
+
+    
+
+    public int getArthiAmount() {
+        return arthiAmount;
+    }
+
+    public void setArthiAmount(int arthiAmount) {
+        this.arthiAmount = arthiAmount;
+    }
+
+    public int getArchanaAmount() {
+        return archanaAmount;
+    }
+
+    public void setArchanaAmount(int archanaAmount) {
+        this.archanaAmount = archanaAmount;
+    }
+
+    public int getPrsadamAmount() {
+        return prsadamAmount;
+    }
+
+    public void setPrsadamAmount(int prsadamAmount) {
+        this.prsadamAmount = prsadamAmount;
+    }
+
+    public int getSpecialPoojaAmount() {
+        return specialPoojaAmount;
+    }
+
+    public void setSpecialPoojaAmount(int specialPoojaAmount) {
+        this.specialPoojaAmount = specialPoojaAmount;
     }
 
     public String getTitle() {

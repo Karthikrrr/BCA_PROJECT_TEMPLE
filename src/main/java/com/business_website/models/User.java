@@ -2,6 +2,8 @@ package com.business_website.models;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
@@ -24,7 +27,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "createdAt")
+    @Column(name = "createdat")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
 
     @Column(name = "role")
@@ -37,8 +41,8 @@ public class User {
     public User(String email, String password, LocalDateTime createdAt ,String role) {
         this.email = email;
         this.password = password;
-        this.createdAt = LocalDateTime.now();
-        this.role = "USER";
+        this.createdAt = createdAt;
+        this.role = role;
     }
 
     public Long getId() {

@@ -1,0 +1,1 @@
+ALTER TABLE placements ADD requirement VARCHAR(1000);

@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEMPLE</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" th:href="@{..\img\logo.jpeg}" />
+
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <link th:href="@{/vendor/animate.css/animate.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+    
+          <a th:href="@{/}" class="logo me-auto"><img th:src="@{/img/logo.jpeg}" alt="" class="img-fluid"></a>
+    
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul class="nav__list">
+              <li class="nav__item"><a th:href="@{/}" class="nav__links active">Home</a></li>
+    
+              <li class="nav__item"><a th:href="@{/about}" class="nav__links"><span>About us</span></a></li>
+              <li class="nav__item"><a th:href="@{/projects}" class="nav__links">Temples</a></li>
+              <li class="nav__item"><a th:href="@{/placements}" class="nav__links">Placements</a></li>
+    
+              <li class="nav__item"><a th:href="@{/contact}" class="nav__links">Contact us</a></li>
+    
+              <li class="dropdown"><a href="#"><span>Features</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  
+                  <li class="nav__item"><a th:href="@{/newsandupdates}" class="nav__links">News and updates</a></li>
+                  <li class="nav__item"><a th:href="@{/collabrations}" class="nav__links">Collabrations</a></li>
+                </ul>
+              </li>
+              <li sec:authorize="!isAuthenticated()" class="nav__item"><a th:href="@{/login}" class="nav__links">Login</a></li>
+              <li sec:authorize="!isAuthenticated()" class="nav__item"><a th:href="@{/register}" class="nav__links">Register</a></li>
+              <li sec:authorize="isAuthenticated()" class="nav__item"><a th:href="@{/logout}" class="nav__links">Logout</a></li>
+    
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
+          <div class="header-social-links d-flex">
+            <a href="mailto:" class="mail"><i class="bi bi-envelope"></i></a>
+            <a href="https://wa.me/phno/" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.instagram.com/techref_digital_solutions_llp/?utm_source=ig_web_button_share_sheet&igsh=ODdmZWVhMTFiMw%3D%3D"
+              class="instagram"><i class="bu bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
+          </div>
+    
+        </div>
+      </header><!-- End Header -->
+
+      
+
+
+  <!-- Page Title -->
+  <div class="page-title" data-aos="fade" style="background-image: url(/img/slide2.jpg);">
+    <div class="container position-relative">
+      <h1>Collabrations</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a th:href="@{/}">Home</a></li>
+          <li class="current">Collabrations</li>
+        </ol>
+      </nav>
+    </div>
+  </div><!-- End Page Title -->
+
+
+
+
+  <!-- Collabrations Section  -->
+
+  <div class="container-xxl collabrations my-5">
+    <div class="container">
+        
+        <div class="row g-0">
+            <div class="col-lg-6 collab-img">
+                <img th:src="@{/img/collabration/sps1.jpg}" alt="" class="img-fluid">
+                <img th:src="@{/img/collabration/sps3.jpeg}" alt="" class="img-fluid">
+                
+            </div>
+            <div class="col-lg-6 pt-lg-5 wow fadeIn" data-wow-delay="0.5s">
+                <div class="bg-white colab-content rounded-top  ">
+                    <p class="fs-5 fw-medium text-primary">Our Collabrations With,</p>
+                    <h1 class="display-6 mb-4">Spoorthy Performance Solution</h1>
+                    <p class="mb-4">The Spoorthy Performance Solution has been committed since 2014 to enhancing individual capability towards higher performance in the workplace and facilitating sustainable organizational growth. SPS has experts with substantial experience for two decades in Training- Needs Assessment, Training design, Training Facilitation, Psychometrics, and Impact Assessment and Research, having clients in government and industries.</p>
+                    <ul>
+                        <li><i class="bi bi-check"></i>Mirror for individual capability using Psychometric</P></li>
+                        <li><i class="bi bi-check"></i>Institutional support to conduct grassroots level research for Employability</p></li>
+                        <li><i class="bi bi-check"></i>Establish network to strengthen Entrepreneurship Ecosystem</p></li>
+                        <li><i class="bi bi-check"></i>Design interface between industry, academic & young entrepreneurship</p></li>
+                        <li><i class="bi bi-check"></i>Develop & Design IT solution for improving Human Performance</p></li>
+                        <li><i class="bi bi-check"></i>Centre of Excellence for Nurturing Human Performance</p></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-xxl collabrations my-5">
+  <div class="container">
+      
+      <div class="row g-0">
+          
+          <div class="col-lg-6 pt-lg-5 wow fadeIn" data-wow-delay="0.5s">
+              <div class="bg-white colab-content rounded-top  ">
+                  <p class="fs-5 fw-medium text-primary">Our Collabrations With,</p>
+                  <h1 class="display-6 mb-4"> ArthaVidhya
+                    </h1>
+                  <p class="mb-4">Skill development training on corporate processes in Finance and Accounting</p>
+
+                  <p>Students will be made to experience the functioning of corporate finance and accounting, by making them work in a simulated VIRTUAL OFFICE environment.
+                    Training is completely ONLINE, INTERACTIVE & PRACTICAL and can be done anytime from anywhere. </p>
+                  <ul>
+                      <li><i class="bi bi-check"></i>Virtual Office gives students practical experience in finance and accounting</P></li>
+                      <li><i class="bi bi-check"></i>Gain knowledge in corporate accounting processes & documentationy</p></li>
+                      <li><i class="bi bi-check"></i>Basic knowledge of Taxation</p></li>
+                      <li><i class="bi bi-check"></i>Builds confidence to face interviews</p></li>
+                    
+                    </ul>
+              </div>
+          </div>
+
+          <div class="col-lg-6 collab-img">
+            <img th:src="@{/img/collabration/arth2.png}" alt="" class="img-fluid">
+            <img th:src="@{/img/collabration/arth1.png}" alt="" class="img-fluid arth-img">
+            
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <a th:href="@{/}" class="foot-logo me-auto"><img th:src="@{../img/Logo.png}" alt=""
+                class="img-fluid"></a>
+            <p>
+              SS Aracade, #665,1st floor <br>
+              Nrupatunga road,M Block, Kuvempu Nagar,<br>
+              Mysuru-23 <br><br>
+              <strong>Phone:</strong><a href="tel:7204041977">+91 7204041977 </a><br>
+              <strong>Email:</strong> <a href="mailto:techrefdigitalsolutions@gmail.com"
+                class="email">techrefdigitalsolutions@gmail.com</a><br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/about}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/projetcs}">Projects</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/newsandupdates}">News & Updates</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/placements}">Placements</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/collabrations}">Collabrations</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/contact}">Contact us</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Placement</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Recruitment</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Project Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Collabrations</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/collabrations}">Arthavidhya</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a th:href="@{/collabrations}">Spoorthi Performance Solutions</a></li>
+              <!-- <li><i class="bx bx-chevron-right"></i> <a th:href="#">Project Management</a></li>
+        <li><i class="bx bx-chevron-right"></i> <a th:href="#">Marketing</a></li> -->
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Techref</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits"> Designed by <a href="">@techrefdigitalsolutions</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://wa.me/7204041977/" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+        <a href="https://www.instagram.com/tecth:href_digital_solutions_llp/?utm_source=ig_web_button_share_sheet&igsh=ODdmZWVhMTFiMw%3D%3D"
+          class="instagram"><i class="bu bi-instagram"></i></a>
+
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- End Footer -->
+
+
+  <!-- Back to Top Button -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- End of back to top button -->
+
+
+
+
+
+
+
+
+
+  <script th:src="@{../vendor/aos/aos.js}"></script>
+  <script th:src="@{../vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{../vendor/glightbox/js/glightbox.min.js}"></script>
+  <script th:src="@{../vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+  <script th:src="@{../vendor/swiper/swiper-bundle.min.js}"></script>
+  <script th:src="@{../vendor/waypoints/noframework.waypoints.js}"></script>
+
+
+  <!-- Template Main JS File -->
+  <script th:src="@{../js/main.js}"></script>
+
+
+
+</body>
+
+</html>

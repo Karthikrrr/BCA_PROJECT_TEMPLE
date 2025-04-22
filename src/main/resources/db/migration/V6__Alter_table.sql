@@ -1,0 +1,1 @@
+ALTER TABLE news_updates RENAME TO newsandupdates;
