@@ -8,7 +8,7 @@ import com.business_website.dto.ProjectsDto;
 import com.business_website.models.Temple;
 
 public interface TempleService {
-    Temple save(ProjectsDto projectsDto, MultipartFile file);
+    Temple save(ProjectsDto projectsDto, MultipartFile file,  MultipartFile file2);
     List<Temple> getAllProjects();
     Temple getProjectById(Long id);
     Temple updateProject(ProjectsDto projectDto, Long id, MultipartFile file);

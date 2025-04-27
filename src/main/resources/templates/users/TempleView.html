@@ -86,7 +86,7 @@
             <h4 class="mb-3">Our Services</h4>
             <div class="d-flex flex-wrap gap-3">
               <a th:href="@{/temple/{id}/arthi/book(id=${temple.id})}" class="btn btn-outline-primary">Book Aarti</a>
-              <a th:href="@{/}" class="btn btn-outline-success">Donate</a>
+              <a th:href="@{/temple/{id}/donate(id=${temple.id})}" class="btn btn-outline-success">Donate</a>
               <a th:href="@{/temple/{id}/prasadam/book(id=${temple.id})}" class="btn btn-outline-warning">Prasadam Booking</a>
               <a th:href="@{/temple/{id}/specialPooja/book(id=${temple.id})}" class="btn btn-outline-danger">Special Pooja Booking</a>
             </div>

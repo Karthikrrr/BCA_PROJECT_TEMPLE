@@ -35,6 +35,9 @@ public class Temple {
 
     private int specialPoojaAmount;
 
+    @Column(name="qrcode")
+    private String qrCode;
+
     @Column(name="createdAt")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
@@ -46,7 +49,7 @@ public class Temple {
 
 
     public Temple(String title, String content, String imageUrl, int arthiAmount, int archanaAmount, int prsadamAmount,
-            int specialPoojaAmount, LocalDateTime createdAt) {
+            int specialPoojaAmount, String qrCode, LocalDateTime createdAt) {
         this.title = title;
         this.content = content;
         this.imageUrl = imageUrl;
@@ -54,6 +57,7 @@ public class Temple {
         this.archanaAmount = archanaAmount;
         this.prsadamAmount = prsadamAmount;
         this.specialPoojaAmount = specialPoojaAmount;
+        this.qrCode = qrCode;
         this.createdAt = createdAt;
     }
 
@@ -129,6 +133,14 @@ public class Temple {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 
  

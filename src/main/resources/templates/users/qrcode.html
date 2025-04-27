@@ -63,113 +63,35 @@
     
         </div>
       </header><!-- End Header -->
+<br>
+<br>
+      <div class="container mt-5 mb-5">
+        <div class="card shadow-lg mt-5">
+          <!-- Text Section -->
+          <div class="card-body p-4 text-center">
+            <h2 class="card-title mb-3" th:text="${temple.title}">Temple Title</h2>
 
-<br><br>
-<div class="container mt-5 mb-5">
-  <div class="card shadow-lg">
-    <div class="card-header bg-primary text-white">
-      <h4 class="mb-0">Special Pooja Booking Form</h4>
-    </div>
-    <div class="card-body">
-      <form id="arthiForm" th:action="@{/temple/{id}/specialPooja/generate-pdf(id=${temple.id})}" method="post">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label for="templeName" class="form-label">Temple Name</label>
-            <input type="text" class="form-control" id="templeName" name="templeName" 
-                   th:value="${temple.title}" readonly required>
-          </div>
-
-          <div class="col-md-6">
-            <label for="userName" class="form-label">Your Name</label>
-            <input type="text" class="form-control" id="userName" name="userName" 
-                   placeholder="Enter Your Name" required>
-          </div>
-
-          <div class="col-md-6">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" 
-                   placeholder="Enter Email Address" required>
-          </div>
-
-          <div class="col-md-6">
-            <label for="phoneNumber" class="form-label">Phone Number</label>
-            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" 
-                   placeholder="Enter Phone Number" pattern="[0-9]{10}" required>
-            <small class="text-muted">10 digit phone number</small>
-          </div>
-
-          <div class="col-md-6">
-            <label for="date" class="form-label">Preferred Date</label>
-            <input type="date" class="form-control" id="date" name="date" 
-                   th:attr="min=${todayDate}" required>
-          </div>
-
-          <div class="col-md-6">
-            <label for="time" class="form-label">Preferred Time</label>
-            <input type="time" class="form-control" id="time" name="time" required>
-          </div>
-
-          <div class="col-md-6">
-            <label for="numberOfPpl" class="form-label">Number of People</label>
-            <input type="number" class="form-control" id="numberOfPpl" name="numberOfPpl" 
-                   placeholder="Enter Number of Participants" min="1" max="7" required>
+            <img th:src="@{/uploads/{image}(image=${temple.qrCode})}" 
+                 alt="Temple Image" 
+                 class="temple-image card-img-top mt-4 mb-4" 
+                 style="width: 200px; height: auto;"/>    
+            <h3> SCAN AND DONATE!</h3>
           </div>
         </div>
+      </div>
+      
 
-        <div class="mt-4">
-          <h5 class="mb-2">Payment Method</h5>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="codCheckbox" name="paymentMethod" value="COD" required>
-            <label class="form-check-label" for="codCheckbox">
-              Pay On Spot
-            </label>
-          </div>
-        </div>
 
-        <!-- Confirmation Checkbox -->
-        <div class="form-check mt-4">
-          <input class="form-check-input" type="checkbox" id="confirmCheckbox" required>
-          <label class="form-check-label" for="confirmCheckbox">
-            I confirm the entered details are correct
-          </label>
-        </div>
 
-        <div class="mt-4">
-          <button type="submit" class="btn btn-success">Book Pooja</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 
-<!-- JavaScript validation + redirect -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("arthiForm");
 
-    form.addEventListener("submit", function (event) {
-      const confirmCheckbox = document.getElementById("confirmCheckbox");
-      const codCheckbox = document.getElementById("codCheckbox");
 
-      if (!confirmCheckbox.checked) {
-        event.preventDefault();
-        alert("Please confirm that the entered details are correct.");
-        return;
-      }
 
-      if (!codCheckbox.checked) {
-        event.preventDefault();
-        alert("Please select a payment method (COD).");
-        return;
-      }
 
-      // Optional redirect after form submission
-      setTimeout(function () {
-        window.location.href = "/projects";
-      }, 5000);
-    });
-  });
-</script>
+
+
+
+
 
 
 

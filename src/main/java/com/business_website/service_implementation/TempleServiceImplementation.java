@@ -23,26 +23,35 @@ public class TempleServiceImplementation implements TempleService {
     private FileUploadServiceImplementation fileUploadServiceImplementation;
 
     @Override
-    public Temple save(ProjectsDto templeDto, MultipartFile file) {
+    public Temple save(ProjectsDto templeDto, MultipartFile file, MultipartFile file2) {
         templeDto.setCreatedAt(LocalDateTime.now());
+    
         if (!file.isEmpty()) {
             String imageUrl = fileUploadServiceImplementation.saveFile(file);
             System.out.println(imageUrl);
             templeDto.setImageUrl(imageUrl);
         }
+    
+        if (!file2.isEmpty()) {
+            String imageUrl2 = fileUploadServiceImplementation.saveFile(file2);
+            System.out.println(imageUrl2);
+            templeDto.setQrCode(imageUrl2);
+        }
+    
         Temple temple = new Temple();
         temple.setTitle(templeDto.getTitle());
         temple.setContent(templeDto.getContent());
         temple.setCreatedAt(templeDto.getCreatedAt());
         temple.setArchanaAmount(templeDto.getArchanaAmount());
         temple.setImageUrl(templeDto.getImageUrl());
+        temple.setQrCode(templeDto.getQrCode()); 
         temple.setArthiAmount(templeDto.getArthiAmount());
         temple.setPrsadamAmount(templeDto.getPrsadamAmount());
         temple.setSpecialPoojaAmount(templeDto.getSpecialPoojaAmount());
-                
+    
         return projectsRepo.save(temple);
     }
-
+    
 
     @Override
     public List<Temple> getAllProjects() {

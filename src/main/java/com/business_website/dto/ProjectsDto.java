@@ -11,6 +11,7 @@ public class ProjectsDto {
     private int archanaAmount;
     private int prsadamAmount;
     private int specialPoojaAmount;
+    private String qrCode;
     private LocalDateTime createdAt;
 
 
@@ -78,5 +79,13 @@ public class ProjectsDto {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getQrCode() {
+        return qrCode;
+    }
+
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 }

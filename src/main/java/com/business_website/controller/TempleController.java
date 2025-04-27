@@ -69,6 +69,13 @@ public String showArthiForm(@PathVariable Long id, Model model) {
     return "users/arthi-booking-view"; 
 }
 
+@GetMapping("/temple/{id}/donate")
+public String getQrCode(@PathVariable Long id, Model model){
+    Temple temple = projectsServiceImplementation.getProjectById(id);
+    model.addAttribute("temple", temple);
+    return "users/qrcode";
+}
+
 @PostMapping("/temple/{id}/arthi/generate-pdf")
 public void generatePdf(
         @PathVariable("id") Long id, 
@@ -172,7 +179,8 @@ private void sendConfirmationEmail(String toEmail, String userName, byte[] pdfBy
     @PostMapping("admin/projects/new")
     public String saveProject(
             @ModelAttribute("project") ProjectsDto projectDto,
-            @RequestParam("image") MultipartFile file, 
+            @RequestParam("image") MultipartFile file,
+            @RequestParam("qrcode") MultipartFile file2, 
             Model model){
         if(file.isEmpty()){
             model.addAttribute("message", "File is Empty!!!");
@@ -183,7 +191,7 @@ private void sendConfirmationEmail(String toEmail, String userName, byte[] pdfBy
             return "admin/create-project";
         }
         else{
-            projectsServiceImplementation.save(projectDto, file);
+            projectsServiceImplementation.save(projectDto, file, file2);
             model.addAttribute("sucess", "Projects Added Sucessfull");
             return "redirect:/admin";
         }
